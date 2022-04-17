@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {observer} from 'mobx-react';
 import Webcam from 'react-webcam';
 import MobileNet from './tensorflow/MobileNet';
-import './_build/App.css';
+import './style/App.scss';
 import tensorflowlogo from './img/tensorflowjs.png';
 
 class App extends Component {
@@ -40,7 +40,6 @@ class App extends Component {
         // now we can rock and roll
         this.props.store.isWebcamLoaded = true;
         console.log('webcam loaded');
-        const self = this;
         this.mobileNet = new MobileNet(this.props.store);
         await this.mobileNet.init();
         console.log('Model Loaded');
@@ -76,8 +75,8 @@ class App extends Component {
                         <div className="title">What's That?</div>
                         <div className="powered-by"> Powered By</div>
                         <div className="images">
-                            <a href="https://js.tensorflow.org/" target="_blank">
-                                <img src={tensorflowlogo}/>
+                            <a href="https://js.tensorflow.org/">
+                                <img src={tensorflowlogo} alt="tensorflow library logo"/>
                             </a>
                         </div>
                     </div>
