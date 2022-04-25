@@ -87,7 +87,7 @@ class App extends Component {
                             screenshotFormat="image/jpeg"
                             style={videoStyle}
                             onUserMedia={this.webcamLoaded}
-                            videoSource={this.state.devices[this.state.devices.length-1].deviceId}
+                            videosource={this.state.devices[this.state.devices.length-1].deviceId}
                         />
                     </div>
                     {classifiers.length === 0 ?
@@ -107,7 +107,7 @@ class App extends Component {
                         </table>
                     </div>
                     <div className="ismodelloaded">{isModelLoaded}</div>
-                    {/*<pre>{JSON.stringify(this.state.devices, null, 4)}</pre>*/}
+                    <pre>{JSON.stringify(this.state.devices, null, 4)}</pre>
 
 
                 </div>

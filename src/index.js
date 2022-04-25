@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import App from './App';
 import store from './store';
@@ -11,8 +11,11 @@ const MaterialApp = () => (
         <App store={store}/>
     </MuiThemeProvider>
 );
+const container = document.getElementById('root')
+// Create a root.
+const root = ReactDOM.createRoot(container);
 
-ReactDOM.render(<MaterialApp/>, document.getElementById('root'));
+root.render(<MaterialApp store={store}/>);
 registerServiceWorker();
 
 

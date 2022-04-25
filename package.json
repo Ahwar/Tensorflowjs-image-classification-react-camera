@@ -1,30 +1,46 @@
 {
-  "name": "whats-that",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@tensorflow/tfjs": "^0.9.1",
-    "cross-env": "^5.1.4",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
+    "@tensorflow/tfjs": "^3.15.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "clang-format": "^1.7.0",
+    "cross-env": "^7.0.3",
+    "material-ui": "^0.20.2",
+    "mobx": "^6.5.0",
+    "mobx-react": "^7.3.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "5.0.1",
+    "react-webcam": "^7.0.1",
+    "sass": "^1.50.1",
+    "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run build-css && react-scripts build",
-    "build-css": "node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/style -o src/_build",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src/style --include-path ./node_modules src/style -o src/_build --watch --recursive",
-    "test": "react-scripts test --env=jsdom",
-    "buildGithubPages": "npm run build-css && cross-env PUBLIC_URL='https://jaretburkett.github.io/Whats-That' react-scripts build && cp -r build docs",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "clang-format": "^1.2.3",
-    "localtunnel": "^1.9.0",
-    "material-ui": "^0.20.0",
-    "mobx": "^4.2.0",
-    "mobx-react": "^5.0.0",
-    "node-sass-chokidar": "^1.2.2",
-    "react-webcam": "^0.4.3"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
