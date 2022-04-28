@@ -2,12 +2,27 @@ import * as tf from '@tensorflow/tfjs';
 
 import {IMAGENET_CLASSES} from './imagenet_classes';
 
-const MOBILENET_MODEL_PATH =
-    // tslint:disable-next-line:max-line-length
-    'https://fs.ahwar.dev/test/content/js2/model.json';
+class L2 {
 
-const IMAGE_SIZE = 224;
-const TOPK_PREDICTIONS = 10;
+    static className = 'L2';
+
+    constructor(config) {
+       return tf.regularizers.l1l2(config)
+    }
+}
+tf.serialization.registerClass(L2);
+
+
+
+const MOBILENET_MODEL_PATH =
+        // tslint:disable-next-line:max-line-length
+    // 'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json';
+    // 'https://fs.ahwar.dev/test/content/js2/model.json';
+    // 'https://red-rattlesnake-78.loca.lt/model/model.json';
+    'https://splendid-fireant-83.loca.lt/model/model.json';
+
+const IMAGE_SIZE = 48;
+const TOPK_PREDICTIONS = 4;
 
 export default class MobileNet{
     constructor(store){
@@ -27,7 +42,7 @@ export default class MobileNet{
         // Warmup the model. This isn't necessary, but makes the first prediction
         // faster. Call `dispose` to release the WebGL memory allocated for the return
         // value of `predict`.
-        this.mobilenet.predict(tf.zeros([1, IMAGE_SIZE, IMAGE_SIZE, 3])).dispose();
+        // this.mobilenet.predict(tf.zeros([-1, IMAGE_SIZE, IMAGE_SIZE, 1])).dispose();
 
         this.setStatus('Model Loaded');
         this.store.isModelLoaded = true;
@@ -62,6 +77,7 @@ export default class MobileNet{
 
             // Reshape to a single-element batch so we can pass it to predict.
             const batched = normalized.reshape([1, IMAGE_SIZE, IMAGE_SIZE, 3]);
+            // console.log(batched)
 
             // Make a prediction through mobilenet.
             return self.mobilenet.predict(batched);
